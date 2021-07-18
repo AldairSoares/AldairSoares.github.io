@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Relatório de Parada</title>
+
+    <link rel="shortcut icon" href="#">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400&display=swap" rel="stylesheet">
+
+    <!-- Sweet Alert-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css" id="theme-styles">    
+</head>
+
+<body>
+    <header>
+        <img src="./assets/oee-logo.png" alt="Remote OEE">
+    </header>
+
+
+    <main class="container">
+        <section id="balance">
+            <h2 class="sr-only">Balanço</h2>
+
+            <div class="card income">
+                <h3>
+                    <span>Linhas Atualmente Paradas</span>
+                    <img src="./assets/income.svg" alt="Image de entradas">
+                </h3>
+                <p id="linhasEnvolvidas"></p>
+            </div>
+
+            <div class="card expense">
+                <h3>
+                    <span>Máquinas Atualmente Paradas</span>
+                    <img src="./assets/expense.svg" alt="Image de saídas">
+                </h3>
+                <p id="maquinasEnvolvidas"></p>
+            </div>
+
+            <div class="card total">
+                <h3>
+                    <span>Custo das Paradas Atuais</span>
+                    <img src="assets/total.svg" alt="image total">
+                </h3>
+                <p id="custoEnvolvido">envolvido</p>
+            </div>
+
+        </section>
+        <section id="transaction">
+            <h2 class="sr-only">Transações</h2>
+            <a href="#" onclick="Modal.open()" class="button new">Nova Parada</a>&nbsp;|&nbsp;
+            <a href="#" onclick="Banco.lerParadas()" class="button new">Ler Paradas</a>&nbsp;|&nbsp;
+            <a href="relatorios.html" class="button new">Relatórios</a>&nbsp;|&nbsp;
+            <a href="#" onclick="Banco.start()" class="button new">Setup da Aplicação</a>
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Linha</th>
+                        <th>Máquina</th>
+                        <th>Tipo Parada</th>
+                        <th>Inicio</th>
+                        <th>Fim</th>
+                        <th>Descrição</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <div class="modal-overlay "><!--active-->
+        <div class="modal">
+            <div id="form">
+                <h2>Nova Parada</h2>
+                    <div class="input-group">
+                        <label class="sr-only" for="id_maquina">Linha/Máquina</label>
+                        <select id="id_maquina"></select>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="sr-only" for="id_tipo_parada">Tipo Parada</label>
+                        <select id="id_tipo_parada"></select>
+                    </div>                    
+
+                    <div class="input-group">
+                        <label class="sr-only" for="dt_inicio">Início</label>
+                        <input type="datetime-local" id="dt_inicio" name="dt_inicio">
+                    </div>
+
+                    <div class="input-group">
+                        <label class="sr-only" for="dt_fim">Fim</label>
+                        <input type="datetime-local" id="dt_fim" name="dt_fim">
+                    </div>
+
+                    <div class="input-group">
+                        <label class="sr-only" for="descricao">Fim</label>
+                        <input type="text" id="descricao" name="descricao" maxlength="40" placeholder="descreva...">
+                    </div>                    
+
+
+                    <div class="input-group actions">
+                        <a href="#" onclick="Modal.close()" class="button cancel">Cancelar</a>
+                        <input type="button" name="btnSalvar" id="btnSalvar" onclick="Banco.salvar()" value="Salvar">
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Remote.oee - Aldair</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

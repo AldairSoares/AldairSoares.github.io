@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Relatório de Parada</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400&display=swap" rel="stylesheet">
+
+    <!-- Sweet Alert-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css" id="theme-styles">    
+
+    <!-- chartjs-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+
+<body>
+    <header>
+        <img src="./assets/oee-logo.png" alt="Remote OEE">
+    </header>
+
+    <main class="container">
+        <section id="balanceFiltro">
+            <h2 class="sr-only">Balanço</h2>
+
+            <div class="cardFiltro income">
+               <!-- <h3>
+                    <span>Aplique os filrros desejados </span>
+                    <img src="./assets/income.svg" alt="Image de entradas">
+                </h3>
+            -->
+                Agrupador:
+                <select id="agrupador">
+                    <option value="turno">Turno</option>
+                    <option value="dia">Dia</option>
+                    <option value="mes">Mês</option>
+                    <option value="linha">Linha</option>
+                </select><br>
+                Inicio:<input type="date" name="inicio" id="inicio" value=""><br>
+                Fim:<input type="date" name="fim" id="fim" value=""><br><br>
+                <input type="button" name="btnFiltrar" id="btnFiltrar" value="Filtrar" onclick="Banco.filtrar()">
+                
+            </div>
+
+        </section>
+        <a href="index.html" class="button new">Home</a>&nbsp;|&nbsp;
+        <section id="transaction">
+            <h3>Paradas por tipo de parada e período</h3>
+            <table>
+                <tr>
+                    <td>
+                        <canvas id="myChart" width="800"></canvas>
+                    </td>
+                </tr>
+
+        
+            </table>            
+        </section>
+    </main>
+
+    <footer>
+        <p>Remote.oee - Aldair</p>
+    </footer>
+
+    <script src="./script.js"></script>
+
+
+</body>
+
+</html>
